@@ -10,11 +10,11 @@
 // @lcpr-template-end
 // @lc code=start
 func numIdenticalPairs(nums []int) int {
-	res := 0
 	mp := map[int]int{}
+	res := 0
 	for _, v := range nums {
-		if j, ok := mp[v]; ok {
-			res = res + j
+		if _, ok := mp[v]; ok {
+			res += mp[v]
 		}
 		mp[v]++
 	}

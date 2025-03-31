@@ -11,15 +11,14 @@
 // @lc code=start
 func searchMatrix(matrix [][]int, target int) bool {
 	m, n := len(matrix), len(matrix[0])
-	left, right := -1, m*n
-	for left+1 < right {
-		mid := left + (right-left)/2
-		if matrix[mid/n][mid%n] == target {
+	i, j := 0, n-1
+	for i <= m-1 && j >= 0 {
+		if matrix[i][j] == target {
 			return true
-		} else if matrix[mid/n][mid%n] < target {
-			left = mid
+		} else if matrix[i][j] > target {
+			j--
 		} else {
-			right = mid
+			i++
 		}
 	}
 	return false

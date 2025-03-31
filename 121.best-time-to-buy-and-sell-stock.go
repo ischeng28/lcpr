@@ -10,7 +10,7 @@
 // @lcpr-template-end
 // @lc code=start
 func maxProfit(prices []int) int {
-	min := math.MaxInt32
+	min := math.MaxInt
 	res := 0
 	for _, v := range prices {
 		if v < min {
@@ -20,7 +20,6 @@ func maxProfit(prices []int) int {
 		}
 	}
 	return res
-
 }
 
 // @lc code=end

@@ -13,23 +13,21 @@ func maximumSum(nums []int) int {
 	mp := map[int]int{}
 	res := -1
 	for _, v := range nums {
-		numSum := getNumSum(v)
-		if j, ok := mp[numSum]; ok {
-			res = max(res, j+v)
-			mp[numSum] = max(j, v)
-		} else {
-			mp[numSum] = v
+		if m, ok := mp[getSum(v)]; ok {
+			res = max(res, v+m)
 		}
+		mp[getSum(v)] = max(mp[getSum(v)], v)
 	}
 	return res
 }
 
-func getNumSum(num int) (res int) {
-	for num > 0 {
-		res += num % 10
-		num = num / 10
+func getSum(a int) int {
+	sum := 0
+	for a > 0 {
+		sum += a % 10
+		a = a / 10
 	}
-	return res
+	return sum
 }
 
 // @lc code=end

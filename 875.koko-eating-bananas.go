@@ -1,26 +1,24 @@
 /*
- * @lc app=leetcode.cn id=1283 lang=golang
+ * @lc app=leetcode.cn id=875 lang=golang
  * @lcpr version=30204
  *
- * [1283] 使结果不超过阈值的最小除数
+ * [875] 爱吃香蕉的珂珂
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func smallestDivisor(nums []int, threshold int) int {
+func minEatingSpeed(piles []int, h int) int {
 	check := func(m int) bool {
-		sum := 0
-		for _, v := range nums {
-			sum += (v + m - 1) / m
-			if sum > threshold {
-				return false
-			}
+		count := 0
+		for _, v := range piles {
+			count += (v + m - 1) / m
 		}
-		return true
+		return count <= h
 	}
-	left, right := 0, slices.Max(nums)
+
+	left, right := 0, slices.Max(piles)
 	for left+1 < right {
 		mid := left + (right-left)/2
 		if check(mid) {
@@ -30,21 +28,22 @@ func smallestDivisor(nums []int, threshold int) int {
 		}
 	}
 	return right
+
 }
 
 // @lc code=end
 
 /*
 // @lcpr case=start
-// [1,2,5,9]\n6\n
+// [3,6,7,11]\n8\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [2,3,5,7,11]\n11\n
+// [30,11,23,4,20]\n5\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [19]\n5\n
+// [30,11,23,4,20]\n6\n
 // @lcpr case=end
 
 */

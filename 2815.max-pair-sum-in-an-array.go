@@ -10,24 +10,25 @@
 // @lcpr-template-end
 // @lc code=start
 func maxSum(nums []int) int {
+	res := -1
 	mp := map[int]int{}
-	maxSum := -1
 	for _, v := range nums {
-		if i, ok := mp[maxNum(v)]; ok {
-			maxSum = max(maxSum, i+v)
+		m := getMaxNum(v)
+		if n, ok := mp[m]; ok {
+			res = max(res, n+v)
 		}
-		mp[maxNum(v)] = max(mp[maxNum(v)], v)
+		mp[m] = max(mp[m], v)
 	}
-	return maxSum
+	return res
 }
 
-func maxNum(num int) int {
-	maxNum := 0
-	for num > 0 {
-		maxNum = max(maxNum, num%10)
-		num = num / 10
+func getMaxNum(m int) int {
+	res := 0
+	for m > 0 {
+		res = max(res, m%10)
+		m = m / 10
 	}
-	return maxNum
+	return res
 }
 
 // @lc code=end

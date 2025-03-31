@@ -17,7 +17,7 @@ func twoSum(nums []int, target int) []int {
 		}
 		mp[v] = j
 	}
-	return []int{}
+	return nil
 }
 
 // @lc code=end

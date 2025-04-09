@@ -1,37 +1,33 @@
 /*
- * @lc app=leetcode.cn id=3427 lang=golang
+ * @lc app=leetcode.cn id=3152 lang=golang
  * @lcpr version=30204
  *
- * [3427] 变长子数组求和
+ * [3152] 特殊数组 II
  */
 
 // @lcpr-template-start
 
 // @lcpr-template-end
 // @lc code=start
-func subarraySum(nums []int) int {
+func isArraySpecial(nums []int, queries [][]int) []bool {
 	pre := make([]int, len(nums)+1)
-	ans := 0
 	for i, v := range nums {
-		pre[i+1] = pre[i] + v
-		if i-v > 0 {
-			ans += pre[i+1] - pre[i-v]
-		} else {
-			ans += pre[i+1]
+		if i == 0 || (v+nums[i-1])%2 != 0 {
+			pre[i+1] = 0
 		}
 	}
-	return ans
+
 }
 
 // @lc code=end
 
 /*
 // @lcpr case=start
-// [2,3,1]\n
+// [3,4,1,2,6]\n[[0,4]]\n
 // @lcpr case=end
 
 // @lcpr case=start
-// [3,1,1,2]\n
+// [4,3,1,6]\n[[0,2],[2,3]]\n
 // @lcpr case=end
 
 */

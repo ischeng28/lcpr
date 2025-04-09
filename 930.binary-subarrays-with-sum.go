@@ -9,23 +9,21 @@
 
 // @lcpr-template-end
 // @lc code=start
-func numSubarraysWithSum(nums []int, goal int) int {
-	sum1, sum2 := 0, 0
+func numSubarraysWithSum(nums []int, goal int) (ans int) {
 	left1, left2 := 0, 0
-	ans := 0
+	sum1, sum2 := 0, 0
 	for right, v := range nums {
 		sum1 += v
 		sum2 += v
-		for left1 <= right && sum1 >= goal {
+		for left1 <= right && sum1 > goal {
 			sum1 -= nums[left1]
 			left1++
 		}
-		for left2 <= right && sum2 >= goal+1 {
+		for left2 <= right && sum2 >= goal {
 			sum2 -= nums[left2]
 			left2++
 		}
-		ans += left1 - left2
-
+		ans += left2 - left1
 	}
 	return ans
 }

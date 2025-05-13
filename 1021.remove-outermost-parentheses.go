@@ -16,7 +16,7 @@ func removeOuterParentheses(s string) string {
 		v := s[i]
 		if v == '(' {
 			stack = append(stack, v)
-			if len(stack) > 0 {
+			if len(stack) > 1 {
 				res += string(v)
 			}
 		} else {
